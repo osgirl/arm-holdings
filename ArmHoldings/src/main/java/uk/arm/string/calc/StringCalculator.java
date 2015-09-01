@@ -59,8 +59,32 @@ public class StringCalculator {
 	private String createDelimiterExpression(String delimiterLine) {
 		String delimiterExpression = delimiterLine.trim();
 		if (delimiterLine.startsWith("[") && delimiterLine.endsWith("]")) {
-    		delimiterExpression = delimiterLine.substring(1, delimiterLine.length() - 1).trim();
+			delimiterExpression = parseDelimiterLine(delimiterLine.substring(1, delimiterLine.length() - 1));
 		}
+		return delimiterExpression;
+	}
+
+	private String parseDelimiterLine(String delimiterLine) {
+		if (delimiterLine.contains("][")) {
+			String delimiterExpression = delimiterLine;
+			delimiterExpression = delimiterExpression.replace("][", "|");
+			delimiterExpression = escapeAllMetaCharacters(delimiterExpression);
+			return delimiterExpression;
+		}
+		return delimiterLine.trim();
+	}
+
+	private String escapeAllMetaCharacters(String delimiterExpression) {
+		delimiterExpression = delimiterExpression.replace("\\", "\\\\");
+		delimiterExpression = delimiterExpression.replace("*", "\\*");
+		delimiterExpression = delimiterExpression.replace(".", "\\.");
+		delimiterExpression = delimiterExpression.replace("$", "\\$");
+		delimiterExpression = delimiterExpression.replace("^", "\\^");
+		delimiterExpression = delimiterExpression.replace("{", "\\{");
+		delimiterExpression = delimiterExpression.replace("[", "\\[");
+		delimiterExpression = delimiterExpression.replace("(", "\\(");
+		delimiterExpression = delimiterExpression.replace(")", "\\)");
+		delimiterExpression = delimiterExpression.replace("+", "\\+");
 		return delimiterExpression;
 	}
 
