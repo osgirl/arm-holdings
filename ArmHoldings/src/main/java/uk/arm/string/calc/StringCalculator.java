@@ -6,7 +6,7 @@ import java.util.List;
 
 public class StringCalculator {
 	
-	public int add(String numbers) {
+	int add(String numbers) {
 		int sumTotal = 0;
 		
 		for (Integer number : parseString(numbers)) {
@@ -16,7 +16,7 @@ public class StringCalculator {
 		return sumTotal;
 	}
     
-    public List<Integer> parseString(String numbers) throws IllegalArgumentException {
+    private List<Integer> parseString(String numbers) throws IllegalArgumentException {
     	List<Integer> numberCollection = new ArrayList<Integer>();
     	
     	String delimiterExpression = ",|\\n";
