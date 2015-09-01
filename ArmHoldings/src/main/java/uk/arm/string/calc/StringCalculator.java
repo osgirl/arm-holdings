@@ -19,8 +19,16 @@ public class StringCalculator {
     public List<Integer> parseString(String numbers) throws IllegalArgumentException {
     	List<Integer> numberCollection = new ArrayList<Integer>();
     	
+    	String delimiterExpression = ",|\\n";
+    	if (numbers.startsWith("//")) {
+    		String delimiterLine = numbers.split("\n")[0].substring(2);
+    		delimiterExpression = delimiterLine.trim();
+    		
+    		numbers = numbers.substring(delimiterLine.length() + 3);
+    	}
+    	
     	try {
-    		List<String> numbersAsStrings = Arrays.asList(numbers.split(",|\\n"));
+    		List<String> numbersAsStrings = Arrays.asList(numbers.split(delimiterExpression));
 
 	    	for (String numberAsString : numbersAsStrings) {
 	    		int number = numberAsString.trim().equals("") ? 0 : Integer.valueOf(numberAsString.trim());
