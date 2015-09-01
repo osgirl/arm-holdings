@@ -30,9 +30,16 @@ public class StringCalculator {
     	try {
     		List<String> numbersAsStrings = Arrays.asList(numbers.split(delimiterExpression));
 
+    		List<Integer> negativeNumbers = new ArrayList<Integer>();
 	    	for (String numberAsString : numbersAsStrings) {
 	    		int number = numberAsString.trim().equals("") ? 0 : Integer.valueOf(numberAsString.trim());
+	    		
+	    		if (number < 0) { negativeNumbers.add(number); }
+	    		
 	    		numberCollection.add(number); 
+	    	}
+	    	if (!negativeNumbers.isEmpty()) {
+	    		throw createNegativesNotAllowedException(negativeNumbers);
 	    	}
 	    	
     	} catch (NumberFormatException nfe) {
@@ -40,5 +47,13 @@ public class StringCalculator {
     	}
     	return numberCollection;
     }
+
+	private IllegalArgumentException createNegativesNotAllowedException(List<Integer> negativeNumbers) {
+		StringBuffer negativesMsg = new StringBuffer("Negatives not allowed: ");
+		for (Integer negativeNumber : negativeNumbers) {
+			negativesMsg.append(negativeNumber);
+		}
+		throw new IllegalArgumentException(negativesMsg.toString());
+	}
 
 }
