@@ -37,5 +37,10 @@ public class StringCalculatorTest {
 	public void testAddWithCommaAndNewLineDelimiter() {
 		assertEquals(17, stringCalculator.add("3, 5 \n9"));
 	}
+	
+	@Test //Step 4
+	public void testAddWithParameterisedDelimiter() {
+		assertEquals(17, stringCalculator.add("//;\n3;5; 9"));
+	}
 
 }
