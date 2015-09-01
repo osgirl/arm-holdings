@@ -27,5 +27,15 @@ public class StringCalculatorTest {
 	public void testAddWithFiveNumbers() {
 		assertEquals(28, stringCalculator.add("3, 5, 9, 1, 10"));
 	}
+	
+	@Test //Step 3
+	public void testAddWithOnlyNewLineDelimiter() {
+		assertEquals(17, stringCalculator.add("3\n 5\n 9"));
+	}
+	
+	@Test //Step 3
+	public void testAddWithCommaAndNewLineDelimiter() {
+		assertEquals(17, stringCalculator.add("3, 5 \n9"));
+	}
 
 }
