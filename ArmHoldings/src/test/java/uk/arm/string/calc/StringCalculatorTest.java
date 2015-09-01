@@ -77,5 +77,10 @@ public class StringCalculatorTest {
 	public void testAddWithParameterisedMultipleDelimiters() {
 		assertEquals(17, stringCalculator.add("//[&][*]\n3&5* 9"));
 	}
+	
+	@Test //Step 9
+	public void testAddWithParameterisedMultipleDelimitersWithCharLengthMoreThanOne() {
+		assertEquals(17, stringCalculator.add("//[&&][**]\n3&&5** 9"));
+	}
 
 }
