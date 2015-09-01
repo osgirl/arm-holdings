@@ -21,9 +21,7 @@ public class StringCalculator {
     	
     	try {
     		List<String> numbersAsStrings = Arrays.asList(numbers.split(","));
-    		if (numbersAsStrings.size() > 2) {
-    			throw new IllegalArgumentException();
-    		}
+
 	    	for (String numberAsString : numbersAsStrings) {
 	    		int number = numberAsString.trim().equals("") ? 0 : Integer.valueOf(numberAsString.trim());
 	    		numberCollection.add(number); 
