@@ -1,6 +1,8 @@
 package uk.arm.string.calc;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -41,6 +43,24 @@ public class StringCalculatorTest {
 	@Test //Step 4
 	public void testAddWithParameterisedDelimiter() {
 		assertEquals(17, stringCalculator.add("//;\n3;5; 9"));
+	}
+	
+	@Test //Step 5
+	public void testAddWithNoNegativeNumbersAllowed() {
+		boolean thrown = false;
+		String exceptionMsg = "";
+		
+		try {
+			stringCalculator.add("//;\n-3;-5; 9");
+		} catch (IllegalArgumentException iae) {
+			thrown = true;
+			exceptionMsg = iae.toString();
+		}
+		
+		assertTrue(thrown);
+		assertTrue(exceptionMsg.contains("-3"));
+		assertTrue(exceptionMsg.contains("-5"));
+		assertFalse(exceptionMsg.contains("9"));
 	}
 
 }
