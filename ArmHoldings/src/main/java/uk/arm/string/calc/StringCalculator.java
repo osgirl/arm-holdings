@@ -36,7 +36,7 @@ public class StringCalculator {
 	    		
 	    		if (number < 0) { negativeNumbers.add(number); }
 	    		
-	    		numberCollection.add(number); 
+	    		numberCollection.add(number > 1000 ? 0 : number);
 	    	}
 	    	if (!negativeNumbers.isEmpty()) {
 	    		throw createNegativesNotAllowedException(negativeNumbers);
