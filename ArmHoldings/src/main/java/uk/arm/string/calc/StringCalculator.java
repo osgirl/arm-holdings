@@ -20,12 +20,13 @@ public class StringCalculator {
     	List<Integer> numberCollection = new ArrayList<Integer>();
     	
     	try {
-    		List<String> numbersAsStrings = Arrays.asList(numbers.split(","));
+    		List<String> numbersAsStrings = Arrays.asList(numbers.split(",|\\n"));
 
 	    	for (String numberAsString : numbersAsStrings) {
 	    		int number = numberAsString.trim().equals("") ? 0 : Integer.valueOf(numberAsString.trim());
 	    		numberCollection.add(number); 
 	    	}
+	    	
     	} catch (NumberFormatException nfe) {
     		throw new IllegalArgumentException(nfe.toString());
     	}
