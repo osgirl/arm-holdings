@@ -22,5 +22,10 @@ public class StringCalculatorTest {
 	public void testAddWithTwoNumbers() {
 		assertEquals(8, stringCalculator.add("3, 5"));
 	}
+	
+	@Test //Step 2
+	public void testAddWithFiveNumbers() {
+		assertEquals(28, stringCalculator.add("3, 5, 9, 1, 10"));
+	}
 
 }
