@@ -22,7 +22,7 @@ public class StringCalculator {
     	String delimiterExpression = ",|\\n";
     	if (numbers.startsWith("//")) {
     		String delimiterLine = numbers.split("\n")[0].substring(2);
-    		delimiterExpression = delimiterLine.trim();
+    		delimiterExpression = createDelimiterExpression(delimiterLine);
     		
     		numbers = numbers.substring(delimiterLine.length() + 3);
     	}
@@ -54,6 +54,14 @@ public class StringCalculator {
 			negativesMsg.append(negativeNumber);
 		}
 		throw new IllegalArgumentException(negativesMsg.toString());
+	}
+
+	private String createDelimiterExpression(String delimiterLine) {
+		String delimiterExpression = delimiterLine.trim();
+		if (delimiterLine.startsWith("[") && delimiterLine.endsWith("]")) {
+    		delimiterExpression = delimiterLine.substring(1, delimiterLine.length() - 1).trim();
+		}
+		return delimiterExpression;
 	}
 
 }
