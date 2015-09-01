@@ -62,5 +62,10 @@ public class StringCalculatorTest {
 		assertTrue(exceptionMsg.contains("-5"));
 		assertFalse(exceptionMsg.contains("9"));
 	}
+	
+	@Test //Step 6
+	public void testAddWithNumbersOver1000Ignored() {
+		assertEquals(1000, stringCalculator.add("1, 999 \n1001"));
+	}
 
 }
