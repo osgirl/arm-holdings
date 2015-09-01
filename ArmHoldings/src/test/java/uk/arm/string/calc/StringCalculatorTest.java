@@ -1,0 +1,26 @@
+package uk.arm.string.calc;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class StringCalculatorTest {
+	
+	private StringCalculator stringCalculator = new StringCalculator();
+	
+	@Test
+	public void testAddWithZeroNumbers() {
+		assertEquals(0, stringCalculator.add(""));
+	}
+	
+	@Test
+	public void testAddWithOneNumbers() {
+		assertEquals(3, stringCalculator.add("3"));
+	}
+	
+	@Test
+	public void testAddWithTwoNumbers() {
+		assertEquals(8, stringCalculator.add("3, 5"));
+	}
+
+}
