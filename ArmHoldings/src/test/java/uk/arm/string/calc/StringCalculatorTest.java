@@ -67,5 +67,10 @@ public class StringCalculatorTest {
 	public void testAddWithNumbersOver1000Ignored() {
 		assertEquals(1000, stringCalculator.add("1, 999 \n1001"));
 	}
+	
+	@Test //Step 7
+	public void testAddWithParameterisedAnyLengthDelimiter() {
+		assertEquals(17, stringCalculator.add("//[&&]\n3&&5&& 9"));
+	}
 
 }
