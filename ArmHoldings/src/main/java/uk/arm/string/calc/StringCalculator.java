@@ -6,7 +6,7 @@ import java.util.List;
 
 public class StringCalculator {
 	
-	int add(String numbers) {
+	public int add(String numbers) {
 		int sumTotal = 0;
 		
 		for (Integer number : parseString(numbers)) {
